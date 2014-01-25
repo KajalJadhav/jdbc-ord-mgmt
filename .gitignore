@@ -1,8 +1,5 @@
-/.idea
+.idea
 build/
 out/
 *.ser
-*.zip
 *.txt
-# Package Files #
-*.war
