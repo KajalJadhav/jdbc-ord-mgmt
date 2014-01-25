@@ -19,8 +19,12 @@ public class OrderManagementTest {
             Class.forName(url);
             connection = DriverManager.getConnection(databasePath,"kajal","password");
             statement = connection.createStatement();
-            String query = "CREATE SCHEMA OrderManagement";
-            statement.execute(query);
+            String query1 = "CREATE SCHEMA OrderManagement";
+            statement.execute(query1);
+
+            String query2 = "CREATE TABLE OrderManagement.Customer(customer_id varchar(20) primary key,customer_name varchar(20),address varchar(30),contact int)";
+            statement.execute(query2);
+
             System.out.println("Created Successfully");
         } catch (SQLException e) {
             e.printStackTrace();
