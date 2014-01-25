@@ -1,0 +1,43 @@
+<project name = "jdbc-ord-mgmt" default = "run-tests">
+    <target name = "clean">
+        <delete dir = "build"/>
+    </target>
+
+    <target name = "cleanClasses">
+        <delete dir = "build/classes"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="build/classes/test"/>
+        <mkdir dir="build/classes/src"/>
+    </target>
+
+    <target name = "compile" depends = "init">
+        <javac srcdir = "src" destdir = "build/classes/src" includeAntRuntime = "false">
+        </javac>
+    </target>
+
+    <target name = "compile-test" depends = "compile">
+        <javac srcdir = "test" destdir= "build/classes/test"
+               classpath="dependencies/test/junit-4.10.jar;build/classes/srci"
+               includeAntRuntime = "false">
+        </javac>
+    </target>
+
+    <target name="run-tests" depends="compile-test">
+        <junit>
+            <classpath>
+                <pathelement location="build/classes/src" />
+                <pathelement location="build/classes/test" />
+                <pathelement location="dependencies/test/junit-4.10.jar"/>
+            </classpath>
+            <batchtest>
+                <fileset dir="build/classes/test">
+                    <include name="**/*Test*" />
+                    <exclude name="**/*$*.class"/>
+                </fileset>
+            </batchtest>
+            <formatter type = "brief" usefile = "false"/>
+        </junit>
+    </target>
+</project>
