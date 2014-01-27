@@ -19,7 +19,7 @@
 
     <target name = "compile-test" depends = "compile">
         <javac srcdir = "test" destdir= "build/classes/test"
-               classpath="dependencies/test/junit-4.10.jar;build/classes/srci"
+               classpath="dependencies/junit-4.10.jar;build/classes/src"
                includeAntRuntime = "false">
         </javac>
     </target>
@@ -29,7 +29,7 @@
             <classpath>
                 <pathelement location="build/classes/src" />
                 <pathelement location="build/classes/test" />
-                <pathelement location="dependencies/test/junit-4.10.jar"/>
+                <pathelement location="dependencies/junit-4.10.jar"/>
             </classpath>
             <batchtest>
                 <fileset dir="build/classes/test">
